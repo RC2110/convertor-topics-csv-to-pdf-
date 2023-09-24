@@ -5,7 +5,6 @@ data = pd.read_csv("topics.csv")
 
 pdf = FPDF(orientation='P', unit='mm', format='A4')
 pdf.set_auto_page_break(auto=False, margin=0)
-
 for index, rows in data.iterrows():
         pdf.set_text_color(100,100,100)
         # set the header
@@ -14,8 +13,8 @@ for index, rows in data.iterrows():
         pdf.cell(w=0, h=10, txt= rows['Topic'], align='L',ln=1)
         pdf.line(10,19,190,19)
 
-        for i in range(19,271,7):
-                pdf.line(10, i, 190, i)
+        for y in range(19,271,7):
+                pdf.line(10, y, 190, y)
 
         # Set the Footer
         pdf.ln(271)
@@ -28,7 +27,7 @@ for index, rows in data.iterrows():
                 pdf.ln(278)
                 pdf.set_font(family="Times", style='I', size=12)
                 pdf.cell(w=0, h=0, txt=rows['Topic'], align='R',ln=1)
-                for i in range(19, 278, 7):
-                        pdf.line(10, i, 190, i)
+                for y in range(19, 278, 7):
+                        pdf.line(10, y, 190, y)
 
 pdf.output("Output.pdf")
